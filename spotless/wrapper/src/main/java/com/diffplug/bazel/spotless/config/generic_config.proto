@@ -1,0 +1,20 @@
+syntax = "proto2";
+
+package com.diffplug.bazel.spotless;
+
+option java_multiple_files = true;
+option java_package = "com.diffplug.bazel.spotless.config";
+
+message GenericConfig {
+	/** Removes trailing whitespace. */
+    optional bool trimTrailingWhitespace = 1;
+
+	/** Ensures that files end with a single newline. */
+    optional bool endWithNewline = 2;
+
+	/** Ensures that the files are indented using spaces. */
+    optional uint32 indentWithSpacesSpacesPerTab = 3;
+
+	/** Ensures that the files are indented using tabs. */
+    optional uint32 indentWithTabsTabToSpaces = 4;
+}

@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package com.diffplug.bazel.spotless;
+
+option java_multiple_files = true;
+option java_package = "com.diffplug.bazel.spotless.config";
+
+message GrEclipseConfig {
+
+}
+
+message GroovyConfig {
+    optional bool excludeJava = 1;
+    repeated string importOrder = 2;
+    optional string importOrderFile = 3;
+    optional GrEclipseConfig grEclipseConfig = 4;
+}

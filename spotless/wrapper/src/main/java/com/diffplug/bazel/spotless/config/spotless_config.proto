@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+package com.diffplug.bazel.spotless;
+
+option java_multiple_files = true;
+option java_package = "com.diffplug.bazel.spotless.config";
+
+import "spotless/wrapper/src/main/java/com/diffplug/bazel/spotless/config/generic_config.proto";
+import "spotless/wrapper/src/main/java/com/diffplug/bazel/spotless/config/groovy_config.proto";
+import "spotless/wrapper/src/main/java/com/diffplug/bazel/spotless/config/java_config.proto";
+import "spotless/wrapper/src/main/java/com/diffplug/bazel/spotless/config/json_config.proto";
+import "spotless/wrapper/src/main/java/com/diffplug/bazel/spotless/config/yaml_config.proto";
+
+// import "com/diffplug/bazel/spotless/config/generic_config.proto";
+// import "com/diffplug/bazel/spotless/config/groovy_config.proto";
+// import "com/diffplug/bazel/spotless/config/java_config.proto";
+// import "com/diffplug/bazel/spotless/config/json_config.proto";
+// import "com/diffplug/bazel/spotless/config/yaml_config.proto";
+
+message SpotlessConfig {
+
+    optional GenericConfig genericConfig = 1;
+
+    oneof LanguageConfig {
+        GroovyConfig groovy = 2;
+        JavaConfig java = 3;
+        JsonConfig json = 4;
+        YamlConfig yaml = 5;
+    }
+}

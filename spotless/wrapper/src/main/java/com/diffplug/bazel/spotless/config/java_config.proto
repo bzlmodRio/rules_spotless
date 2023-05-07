@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+package com.diffplug.bazel.spotless;
+
+option java_multiple_files = true;
+option java_package = "com.diffplug.bazel.spotless.config";
+
+message ImportOrderConfig {
+    repeated string importOrder = 1;
+    optional string importOrderFile = 2;
+
+    /** Sorts wildcard imports after non-wildcard imports, instead of before. */
+    optional bool wildcardsLast = 3;
+}
+
+message GoogleJavaFormatConfig {
+    optional string version = 1;
+    optional string groupArtifact = 2;
+    optional string style = 3;
+    optional bool reflowLongStrings = 4;
+}
+
+message PalantirJavaFormatConfig {
+    optional string version = 1;
+}
+
+message EclipseConfig {
+    optional string version = 1;
+}
+
+message FormatAnnotationsConfig {
+    /** Annotations in addition to those in the default list. */
+    repeated string addedTypeAnnotations = 1;
+
+    /** Annotations that the user doesn't want treated as type annotations. */
+    repeated string removedTypeAnnotations = 2;
+}
+
+message JavaConfig {
+    optional ImportOrderConfig importOrder = 1;
+    optional bool removeUnusedImports = 2;
+    optional GoogleJavaFormatConfig googleJavaFormat = 3;
+    optional PalantirJavaFormatConfig palantirJavaFormat = 4;
+    optional EclipseConfig eclipse = 5;
+    optional FormatAnnotationsConfig formatAnnotations = 6;
+}

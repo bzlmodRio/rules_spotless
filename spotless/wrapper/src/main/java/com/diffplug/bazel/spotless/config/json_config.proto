@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package com.diffplug.bazel.spotless;
+
+option java_multiple_files = true;
+option java_package = "com.diffplug.bazel.spotless.config";
+
+message SimpleConfig {
+    optional uint32 indent = 1;
+}
+
+message GsonConfig {
+    optional uint32 indentSpaces = 1;
+    optional bool sortByKeys = 2;
+    optional bool escapeHtml = 3;
+    optional string version = 4;
+}
+
+// message JacksonJsonConfig {
+// }
+
+
+message JsonConfig {
+    optional SimpleConfig simpleConfig = 1;
+    optional GsonConfig gsonConfig = 2;
+}

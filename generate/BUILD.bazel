@@ -1,0 +1,26 @@
+py_library(
+    name = "get_spotless_group",
+    srcs = ["get_spotless_group.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
+
+py_binary(
+    name = "generate",
+    srcs = ["generate.py"],
+    deps = [
+        ":get_spotless_group",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
+
+py_binary(
+    name = "publish",
+    srcs = ["publish.py"],
+    deps = [
+        ":get_spotless_group",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)

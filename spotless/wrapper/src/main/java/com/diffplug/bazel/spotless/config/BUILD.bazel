@@ -1,0 +1,12 @@
+load("@rules_java//java:defs.bzl", "java_proto_library")
+
+proto_library(
+    name = "protos",
+    srcs = glob(["*.proto"]),
+)
+
+java_proto_library(
+    name = "config",
+    visibility = ["//visibility:public"],
+    deps = [":protos"],
+)

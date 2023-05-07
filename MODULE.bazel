@@ -1,21 +1,26 @@
 module(
-    name = "rules_pmd",
-    version = "6.39.0",
+    name = "rules_spotless",
+    version = "2.34.0",
+    compatibility_level = 1,
 )
 
-bazel_dep(name = "rules_java", version = "5.3.5")
-bazel_dep(name = "rules_jvm_external", version = "4.4.2")
-
-PMD_VERSION = "6.39.0"
+bazel_dep(name = "rules_java", version = "5.4.0")
+bazel_dep(name = "rules_jvm_external", version = "4.5")
+bazel_dep(name = "rules_proto", version = "5.3.0-21.7")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     name = "rules_spotless_dependencies",
     artifacts = [
-        "net.sourceforge.pmd:pmd-core:{}".format(PMD_VERSION),
-        "net.sourceforge.pmd:pmd-dist:{}".format(PMD_VERSION),
+        "com.diffplug.spotless:spotless-lib:2.34.0",
+        "com.diffplug.spotless:spotless-lib-extra:2.34.0",
+        "com.google.googlejavaformat:google-java-format:1.15.0",
+        "com.google.protobuf:protobuf-java:3.21.7",
+        "org.eclipse.jdt:org.eclipse.jdt.core:3.27.0",
+        "org.eclipse.platform:org.eclipse.equinox.common:3.15.0",
+        "org.slf4j:slf4j-simple:2.0.0",
     ],
-    lock_file = "//:rules_pmd_dependencies_install.json",
+    lock_file = "@rules_spotless//:rules_spotless_dependencies_install.json",
     repositories = [
         "https://repo1.maven.org/maven2",
         "https://repo.maven.apache.org/maven2/",
@@ -23,5 +28,5 @@ maven.install(
 )
 use_repo(
     maven,
-    "rules_pmd_dependencies",
+    "rules_spotless_dependencies",
 )

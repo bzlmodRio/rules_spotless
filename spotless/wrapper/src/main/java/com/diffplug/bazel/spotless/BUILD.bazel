@@ -1,0 +1,70 @@
+load("@rules_jvm_external//:defs.bzl", "artifact")
+
+java_library(
+    name = "spotless",
+    srcs = glob(
+        ["*.java"],
+        exclude = [
+            "SpotlessApply.java",
+            "SpotlessCheck.java",
+        ],
+    ),
+    deps = [
+        "//spotless/wrapper/src/main/java/com/diffplug/bazel/spotless/config",
+        "@rules_spotless_dependencies//:com_google_protobuf_protobuf_java",
+        artifact(
+            "org.slf4j:slf4j-simple",
+            repository_name = "rules_spotless_dependencies",
+        ),
+        artifact(
+            "com.diffplug.spotless:spotless-lib",
+            repository_name = "rules_spotless_dependencies",
+        ),
+        artifact(
+            "com.diffplug.spotless:spotless-lib-extra",
+            repository_name = "rules_spotless_dependencies",
+        ),
+        "@bazel_tools//tools/java/runfiles",
+
+        # TODO temp
+        "@rules_spotless_dependencies//:com_google_googlejavaformat_google_java_format",
+    ],
+)
+
+java_binary(
+    name = "SpotlessCheck",
+    srcs = ["SpotlessCheck.java"],
+    data = [
+        "@rules_spotless_dependencies//:com_google_googlejavaformat_google_java_format",
+        #"@rules_spotless_dependencies//:com_palantir_javaformat_palantir_java_format",
+    ],
+    jvm_flags = [
+        "--add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+        "--add-exports jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+        "--add-exports jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+        "--add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+        "--add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+    ],
+    # main_class = "rules_spotless.RunCheck",
+    tags = ["no-sandbox"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":spotless",
+        # "//lib-extra",
+        artifact(
+            "com.diffplug.spotless:spotless-lib-extra",
+            repository_name = "rules_spotless_dependencies",
+        ),
+    ],
+)
+
+java_library(
+    name = "SpotlessApply",
+    srcs = ["SpotlessApply.java"],
+    tags = ["no-sandbox"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":spotless",
+        "@bazel_tools//tools/java/runfiles",
+    ],
+)
