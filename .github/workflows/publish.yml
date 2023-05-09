@@ -75,5 +75,5 @@ jobs:
         base: bzlmodrio
         token: ${{ secrets.AUTO_UPDATE_KEY }}
         reviewers: pjreiniger
-        branch: autoupdate/rules_wpi_styleguid_update
+        branch: autoupdate/rules_spotless_update
         title: "Auto-update latest rules_spotless module release"
