@@ -88,7 +88,10 @@ public class BazelProvisioner implements Provisioner {
 		} else {
 			base += "/rules_spotless_dependencies";
 		}
-		base += "/v1/https/repo1.maven.org/maven2";
+		// Older versions of rules_jvm_external put the files here
+		if (new File(base, "v1").exists()) {
+			base += "/v1/https/repo1.maven.org/maven2";
+		}
 
 		for (String subpath : subpaths) {
 			output.add(new File(base + "/" + subpath));
