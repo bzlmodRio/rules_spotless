@@ -53,18 +53,24 @@ public class BazelProvisioner implements Provisioner {
 			String line;
 			while ((line = br.readLine()) != null) {
 				if (line.contains("guava")) {
-					System.out.println(line);
 					break;
 				}
 			}
-			artifactBase = line.substring(0, line.indexOf("/v1/"));
+			if (line.contains("v1")) {
+				artifactBase = line.substring(0, line.indexOf("/v1/")) + "/v1/https/repo1.maven.org/maven2/";
+			} else {
+				String substring = "rules_spotless_dependencies/";
+				artifactBase = line.substring(0, line.indexOf(substring)) + substring;
+			}
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 
 		for (String subpath : subpaths) {
-			String depPath = artifactBase + "/v1/https/repo1.maven.org/maven2/" + subpath;
-			output.add(new File(runfiles.unmapped().rlocation(depPath)));
+			String depPath = artifactBase + subpath;
+			File resolvedFile = new File(runfiles.unmapped().rlocation(depPath));
+			// System.out.println("Loading " + depPath + " -> " + resolvedFile);
+			output.add(resolvedFile);
 		}
 
 		return output;
