@@ -1,3 +1,5 @@
+load("@rules_java//java:defs.bzl", "java_binary")
+
 def _spotless_check_impl(ctx):
     inputs = []
     outputs = []
@@ -37,30 +39,30 @@ def _spotless_check_impl(ctx):
 spotless_check = rule(
     implementation = _spotless_check_impl,
     attrs = {
+        "config_file": attr.label(
+            # allow_files = True,
+            mandatory = True,
+            allow_single_file = True,
+        ),
+        "package_name": attr.string(mandatory = True),
+        "srcs": attr.label_list(
+            allow_files = True,
+            mandatory = True,
+            allow_empty = False,
+        ),
+        "target_name": attr.string(mandatory = True),
         "_executable": attr.label(
             # default = "//spotless/wrapper:RunCheck",
             default = "//spotless/wrapper/src/main/java/com/diffplug/bazel/spotless:SpotlessCheck",
             executable = True,
             cfg = "exec",
         ),
-        "srcs": attr.label_list(
-            allow_files = True,
-            mandatory = True,
-            allow_empty = False,
-        ),
-        "config_file": attr.label(
-            # allow_files = True,
-            mandatory = True,
-            allow_single_file = True,
-        ),
-        "target_name": attr.string(mandatory = True),
-        "package_name": attr.string(mandatory = True),
     },
     provides = [DefaultInfo],
 )
 
 def spotless_apply(name, srcs, config_file, package_name, **kwargs):
-    native.java_binary(
+    java_binary(
         name = name,
         main_class = "com.diffplug.bazel.spotless.SpotlessApply",
         runtime_deps = ["@rules_spotless//spotless/wrapper/src/main/java/com/diffplug/bazel/spotless:SpotlessApply"],
