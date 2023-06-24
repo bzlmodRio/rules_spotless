@@ -26,3 +26,13 @@ py_binary(
         "@bzlmodrio-gentool//bazelrio_gentool",
     ],
 )
+
+py_binary(
+    name = "get_version",
+    srcs = ["get_version.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":get_spotless_group",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
