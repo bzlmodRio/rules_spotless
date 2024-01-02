@@ -29,7 +29,6 @@ java_library(
             "com.google.code.findbugs:findbugs-annotations",
             repository_name = "rules_spotless_dependencies",
         ),
-        
         "@bazel_tools//tools/java/runfiles",
 
         # TODO temp
