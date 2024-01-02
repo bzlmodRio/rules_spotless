@@ -29,6 +29,9 @@ import com.diffplug.spotless.Provisioner;
 import java.nio.file.Path;
 import com.google.devtools.build.runfiles.Runfiles;
 
+import com.google.devtools.build.runfiles.AutoBazelRepository;
+
+@AutoBazelRepository
 public class BazelProvisioner implements Provisioner {
 	private String mavenToFilesystem(String mavenCoordinates) {
 		String[] parts = mavenCoordinates.split(":");

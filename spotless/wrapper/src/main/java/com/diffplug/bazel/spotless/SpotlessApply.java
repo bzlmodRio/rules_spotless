@@ -22,6 +22,9 @@ import java.util.Arrays;
 import java.util.List;
 import com.google.devtools.build.runfiles.Runfiles;
 
+import com.google.devtools.build.runfiles.AutoBazelRepository;
+
+@AutoBazelRepository
 public class SpotlessApply {
 	public static void main(String[] args) throws IOException {
 		System.out.println(Arrays.toString(args));
