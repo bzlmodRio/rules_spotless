@@ -14,6 +14,7 @@ maven.install(
     artifacts = [
         "com.diffplug.spotless:spotless-lib:2.34.0",
         "com.diffplug.spotless:spotless-lib-extra:2.34.0",
+        "com.google.code.findbugs:findbugs-annotations:3.0.1",
         "com.google.googlejavaformat:google-java-format:1.15.0",
         "com.google.protobuf:protobuf-java:3.21.7",
         "org.eclipse.jdt:org.eclipse.jdt.core:3.27.0",
