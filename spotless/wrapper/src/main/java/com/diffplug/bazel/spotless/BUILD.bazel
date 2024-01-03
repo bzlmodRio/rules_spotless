@@ -25,6 +25,10 @@ java_library(
             "com.diffplug.spotless:spotless-lib-extra",
             repository_name = "rules_spotless_dependencies",
         ),
+        artifact(
+            "com.google.code.findbugs:findbugs-annotations",
+            repository_name = "rules_spotless_dependencies",
+        ),
         "@bazel_tools//tools/java/runfiles",
 
         # TODO temp
