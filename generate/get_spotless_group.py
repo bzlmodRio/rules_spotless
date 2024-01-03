@@ -25,6 +25,7 @@ def get_spotless_group():
             ("com.google.protobuf:protobuf-java", "3.21.7"),
             ("org.eclipse.jdt:org.eclipse.jdt.core", "3.27.0"),
             ("org.eclipse.platform:org.eclipse.equinox.common", "3.15.0"),
+            ("com.google.code.findbugs:findbugs-annotations", "3.0.1"),
         ],
     )
 

@@ -12,12 +12,12 @@ def load_spotless_dependencies():
         artifacts = [
             "com.diffplug.spotless:spotless-lib:2.34.0",
             "com.diffplug.spotless:spotless-lib-extra:2.34.0",
+            "com.google.code.findbugs:findbugs-annotations:3.0.1",
             "com.google.googlejavaformat:google-java-format:1.15.0",
             "com.google.protobuf:protobuf-java:3.21.7",
             "org.eclipse.jdt:org.eclipse.jdt.core:3.27.0",
             "org.eclipse.platform:org.eclipse.equinox.common:3.15.0",
             "org.slf4j:slf4j-simple:2.0.0",
-            "com.google.code.findbugs:findbugs-annotations:3.0.1",
         ],
         repositories = [
             "https://repo1.maven.org/maven2",
