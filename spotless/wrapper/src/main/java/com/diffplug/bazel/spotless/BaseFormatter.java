@@ -56,7 +56,7 @@ public class BaseFormatter {
 		}
 	}
 
-	protected void addStep(FormatterStep newStep) {
+	protected final void addStep(FormatterStep newStep) {
 		requireNonNull(newStep);
 		int existingIdx = getExistingStepIdx(newStep.getName());
 		if (existingIdx != -1) {
