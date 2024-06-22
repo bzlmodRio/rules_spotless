@@ -113,7 +113,7 @@ public class BazelProvisioner implements Provisioner {
 		// System.out.println("Provisioner getting called: " + withTransitives + ", " + mavenCoordinates);
 
 		Set<String> subpaths = new HashSet<>();
-		subpaths.add(mavenToFilesystem("com.google.guava:guava:31.0.1-jre"));
+		subpaths.add(mavenToFilesystem("com.google.guava:guava:31.1-jre"));
 		for (String maven : mavenCoordinates) {
 			subpaths.add(mavenToFilesystem(maven));
 		}

@@ -22,15 +22,17 @@ import com.diffplug.bazel.spotless.config.GoogleJavaFormatConfig;
 import com.diffplug.bazel.spotless.config.ImportOrderConfig;
 import com.diffplug.bazel.spotless.config.JavaConfig;
 import com.diffplug.bazel.spotless.config.PalantirJavaFormatConfig;
-import com.diffplug.spotless.extra.EclipseBasedStepBuilder;
+import com.diffplug.spotless.extra.EquoBasedStepBuilder;
 import com.diffplug.spotless.extra.java.EclipseJdtFormatterStep;
 import com.diffplug.spotless.java.FormatAnnotationsStep;
 import com.diffplug.spotless.java.GoogleJavaFormatStep;
 import com.diffplug.spotless.java.ImportOrderStep;
 import com.diffplug.spotless.java.PalantirJavaFormatStep;
 import com.diffplug.spotless.java.RemoveUnusedImportsStep;
+import java.util.Set;
 
 public class JavaFormatter extends BaseFormatter {
+	@SuppressWarnings("this-escape")
 	public JavaFormatter(GenericConfig genericConfig, JavaConfig config) {
 		super(genericConfig);
 
@@ -71,7 +73,7 @@ public class JavaFormatter extends BaseFormatter {
 
 	private void createEclipseJavaFormatStep(EclipseConfig config) {
 		final String version = config.hasVersion() ? config.getVersion() : EclipseJdtFormatterStep.defaultVersion();
-		EclipseBasedStepBuilder builder = EclipseJdtFormatterStep.createBuilder(provisioner);
+		EquoBasedStepBuilder builder = EclipseJdtFormatterStep.createBuilder(provisioner);
 		builder.setVersion(version);
 		addStep(builder.build());
 	}
@@ -93,13 +95,16 @@ public class JavaFormatter extends BaseFormatter {
 
 	private void createImportOrderStep(ImportOrderConfig config) {
 		boolean wildcardsLast = config.hasWildcardsLast() && config.getWildcardsLast();
+		boolean semanticSort = false;
+		Set<String> treatAsPackage = Set.of();
+		Set<String> treatAsClass = Set.of();
 
 		if (config.hasImportOrderFile() && !config.getImportOrderList().isEmpty()) {
 			throw new IllegalArgumentException("Cannot specify both import order and import order file");
 		} else if (config.hasImportOrderFile()) {
-			addStep(ImportOrderStep.forJava().createFrom(wildcardsLast, config.getImportOrderFile()));
+			addStep(ImportOrderStep.forJava().createFrom(wildcardsLast, semanticSort, treatAsPackage, treatAsClass, config.getImportOrderFile()));
 		} else if (!config.getImportOrderList().isEmpty()) {
-			addStep(ImportOrderStep.forJava().createFrom(wildcardsLast, config.getImportOrderList().toArray(new String[]{})));
+			addStep(ImportOrderStep.forJava().createFrom(wildcardsLast, semanticSort, treatAsPackage, treatAsClass, config.getImportOrderList().toArray(new String[]{})));
 		}
 	}
 }
