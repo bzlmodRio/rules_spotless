@@ -2,7 +2,7 @@ from bazelrio_gentool.generate_styleguide_rule import StyleguideGroup
 
 
 def get_spotless_group():
-    version = "2.40.0" # corresponds to gradle/6.20.0
+    version = "2.40.0"  # corresponds to gradle/6.20.0
     group = StyleguideGroup(
         short_name="spotless",
         is_java=True,
