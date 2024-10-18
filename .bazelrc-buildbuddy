@@ -25,4 +25,3 @@ build:remote_user --remote_download_toplevel
 build:ci --config=build_buddy
 build:ci --remote_download_minimal
 build:ci --build_metadata=ROLE=CI
-build:ci --remote_download_minimal
