@@ -1,12 +1,13 @@
-from bazelrio_gentool.generate_styleguide_rule import generate_styleguide_rule
-from bazelrio_gentool.clean_existing_version import clean_existing_version
-from get_spotless_group import get_spotless_group
-from bazelrio_gentool.cli import add_generic_cli, GenericCliArgs
-import os
 import argparse
+import os
+
+from bazelrio_gentool.clean_existing_version import clean_existing_version
+from bazelrio_gentool.cli import GenericCliArgs, add_generic_cli
 from bazelrio_gentool.generate_module_project_files import (
     create_default_mandatory_settings,
 )
+from bazelrio_gentool.generate_styleguide_rule import generate_styleguide_rule
+from get_spotless_group import get_spotless_group
 
 
 def main():

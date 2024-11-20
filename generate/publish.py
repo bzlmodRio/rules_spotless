@@ -1,7 +1,8 @@
 import os
+
 from bazelrio_gentool.publish_module import publish_module
-from get_spotless_group import get_spotless_group
 from bazelrio_gentool.utils import TEMPLATE_BASE_DIR
+from get_spotless_group import get_spotless_group
 
 
 def main():
