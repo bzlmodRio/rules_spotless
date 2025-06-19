@@ -95,7 +95,17 @@ public class BazelProvisioner implements Provisioner {
 			}
 			base = files[0].toString();
 		} else {
-			base += "/rules_spotless_dependencies";
+			File [] files = new File(base).listFiles(new FilenameFilter() {
+				@Override
+				public boolean accept(File dir, String name) {
+					return name.contains("rules_spotless_dependencies");
+				}
+			});
+			if (files.length != 1) {
+				base += "/rules_spotless_dependencies";
+			} else {
+				base = files[0].toString();
+			}
 		}
 		// Older versions of rules_jvm_external put the files here
 		if (new File(base, "v1").exists()) {
