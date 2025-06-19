@@ -1,12 +1,6 @@
 load("@rules_jvm_external//:defs.bzl", "maven_install")
-load("@rules_jvm_external//:repositories.bzl", "rules_jvm_external_deps")
-load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
 def load_spotless_dependencies():
-    rules_proto_dependencies()
-    rules_proto_toolchains()
-
-    rules_jvm_external_deps()
     maven_install(
         name = "rules_spotless_dependencies",
         artifacts = [
