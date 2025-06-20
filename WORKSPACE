@@ -10,6 +10,13 @@ http_archive(
 )
 
 http_archive(
+    name = "rules_jvm_external",
+    sha256 = "c18a69d784bcd851be95897ca0eca0b57dc86bb02e62402f15736df44160eb02",
+    strip_prefix = "rules_jvm_external-6.3",
+    url = "https://github.com/bazelbuild/rules_jvm_external/releases/download/6.3/rules_jvm_external-6.3.tar.gz",
+)
+
+http_archive(
     name = "rules_cc",
     sha256 = "712d77868b3152dd618c4d64faaddefcc5965f90f5de6e6dd1d5ddcd0be82d42",
     strip_prefix = "rules_cc-0.1.1",
@@ -34,13 +41,6 @@ http_archive(
     sha256 = "0e5c64a2599a6e26c6a03d6162242d231ecc0de219534c38cb4402171def21e8",
     strip_prefix = "rules_proto-7.0.2",
     url = "https://github.com/bazelbuild/rules_proto/archive/refs/tags/7.0.2.tar.gz",
-)
-
-http_archive(
-    name = "rules_jvm_external",
-    sha256 = "c18a69d784bcd851be95897ca0eca0b57dc86bb02e62402f15736df44160eb02",
-    strip_prefix = "rules_jvm_external-6.3",
-    url = "https://github.com/bazelbuild/rules_jvm_external/releases/download/6.3/rules_jvm_external-6.3.tar.gz",
 )
 
 http_archive(
