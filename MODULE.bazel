@@ -1,6 +1,6 @@
 module(
     name = "rules_spotless",
-    version = "2.40.0",
+    version = "2.40.0.bcr1",
     compatibility_level = 1,
 )
 
