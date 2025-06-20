@@ -2,13 +2,6 @@ workspace(name = "rules_spotless")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# WPI Formatter
-http_archive(
-    name = "rules_wpiformat",
-    sha256 = "0d77c34bf0283cebff00c6fb89c57318150944e4a5ec927df024cf5da7baf75a",
-    url = "https://github.com/bzlmodRio/rules_wpiformat/releases/download/2024.45/rules_wpiformat-2024.45.tar.gz",
-)
-
 http_archive(
     name = "rules_python",
     sha256 = "690e0141724abb568267e003c7b6d9a54925df40c275a870a4d934161dc9dd53",
@@ -33,9 +26,7 @@ http_archive(
     name = "com_google_protobuf",
     sha256 = "10a0d58f39a1a909e95e00e8ba0b5b1dc64d02997f741151953a2b3659f6e78c",
     strip_prefix = "protobuf-29.0",
-    urls = [
-        "https://github.com/protocolbuffers/protobuf/archive/v29.0.tar.gz",
-    ],
+    urls = ["https://github.com/protocolbuffers/protobuf/archive/v29.0.tar.gz"],
 )
 
 http_archive(
@@ -58,6 +49,12 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_java/releases/download/8.11.0/rules_java-8.11.0.tar.gz",
 )
 
+# WPI Formatter
+http_archive(
+    name = "rules_wpiformat",
+    sha256 = "0d77c34bf0283cebff00c6fb89c57318150944e4a5ec927df024cf5da7baf75a",
+    url = "https://github.com/bzlmodRio/rules_wpiformat/releases/download/2024.45/rules_wpiformat-2024.45.tar.gz",
+)
 
 load("@rules_wpiformat//dependencies:load_rule_dependencies.bzl", "load_wpiformat_rule_dependencies")
 
@@ -76,7 +73,6 @@ load("@rules_wpiformat_pip//:requirements.bzl", "install_deps")
 install_deps()
 
 # Rule Dependencies
-
 
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
