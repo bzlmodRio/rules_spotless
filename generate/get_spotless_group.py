@@ -12,7 +12,7 @@ def get_spotless_group():
         version=version,
         year=1,
         maven_url="",
-        patch=patch
+        patch=patch,
     )
 
     group.create_java_dependency(
