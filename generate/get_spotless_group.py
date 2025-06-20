@@ -31,4 +31,6 @@ def get_spotless_group():
         ],
     )
 
+    group.executable_tools = True
+
     return group
