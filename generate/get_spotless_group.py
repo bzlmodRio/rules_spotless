@@ -3,6 +3,7 @@ from bazelrio_gentool.generate_styleguide_rule import StyleguideGroup
 
 def get_spotless_group():
     version = "2.40.0"  # corresponds to gradle/6.20.0
+    patch = ".bcr1"
     group = StyleguideGroup(
         short_name="spotless",
         is_java=True,
@@ -11,6 +12,7 @@ def get_spotless_group():
         version=version,
         year=1,
         maven_url="",
+        patch=patch,
     )
 
     group.create_java_dependency(
@@ -28,5 +30,7 @@ def get_spotless_group():
             ("com.google.code.findbugs:findbugs-annotations", "3.0.1"),
         ],
     )
+
+    group.executable_tools = True
 
     return group
