@@ -51,6 +51,17 @@ http_archive(
 
 # WPI Formatter
 http_archive(
+    name = "bazel_features",
+    sha256 = "a015f3f2ebf4f1ac3f4ca8ea371610acb63e1903514fa8725272d381948d2747",
+    strip_prefix = "bazel_features-1.31.0",
+    url = "https://github.com/bazel-contrib/bazel_features/releases/download/v1.31.0/bazel_features-v1.31.0.tar.gz",
+)
+
+load("@bazel_features//:deps.bzl", "bazel_features_deps")
+
+bazel_features_deps()
+
+http_archive(
     name = "rules_wpiformat",
     sha256 = "ac055f723802c2bfcdaf2c46e3426e0dc685988561173ba8d4f6ad55f6e65a99",
     url = "https://github.com/bzlmodRio/rules_wpiformat/releases/download/2025.68/rules_wpiformat-2025.68.tar.gz",
