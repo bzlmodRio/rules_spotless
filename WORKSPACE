@@ -4,9 +4,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_python",
-    sha256 = "690e0141724abb568267e003c7b6d9a54925df40c275a870a4d934161dc9dd53",
-    strip_prefix = "rules_python-0.40.0",
-    url = "https://github.com/bazelbuild/rules_python/releases/download/0.40.0/rules_python-0.40.0.tar.gz",
+    sha256 = "f609f341d6e9090b981b3f45324d05a819fd7a5a56434f849c761971ce2c47da",
+    strip_prefix = "rules_python-1.7.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/1.7.0/rules_python-1.7.0.tar.gz",
 )
 
 http_archive(
@@ -52,8 +52,8 @@ http_archive(
 # WPI Formatter
 http_archive(
     name = "rules_wpiformat",
-    sha256 = "d27a5706aff034c84fca018f46c751575792a2ef267cb5a9af70c677b2b52c40",
-    url = "https://github.com/bzlmodRio/rules_wpiformat/releases/download/2025.33/rules_wpiformat-2025.33.tar.gz",
+    sha256 = "ac055f723802c2bfcdaf2c46e3426e0dc685988561173ba8d4f6ad55f6e65a99",
+    url = "https://github.com/bzlmodRio/rules_wpiformat/releases/download/2025.68/rules_wpiformat-2025.68.tar.gz",
 )
 
 # Rule Dependencies
